@@ -5,7 +5,8 @@
  */
 package com.mycompany.todaysmenu.todaysmenu.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,7 +25,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "menu")
-@Data
+@Getter
+@Setter
 public class Menu {
 
     @Id

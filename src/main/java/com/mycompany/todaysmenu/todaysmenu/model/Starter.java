@@ -5,7 +5,9 @@
  */
 package com.mycompany.todaysmenu.todaysmenu.model;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +20,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "starter")
-@Data
+@Getter
+@Setter
 public class Starter {
 
     @Id
@@ -30,5 +33,6 @@ public class Starter {
 
     @ManyToOne()
     @JoinColumn(name = "menu_id", nullable = false)
+    @JsonIgnore
     private Menu menu;
 }
