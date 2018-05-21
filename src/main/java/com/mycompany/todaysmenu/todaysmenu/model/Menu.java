@@ -36,12 +36,12 @@ public class Menu {
     @NotBlank
     private Date date;
 
-    @OneToMany(mappedBy = "dishName", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     private Set<Starter> starters = new HashSet<>(0);
 
-    @OneToMany(mappedBy = "dishName", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     private Set<MainCourse> mainCourses = new HashSet<>(0);
 
-    @OneToMany(mappedBy = "dishName", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     private Set<Dessert> desserts = new HashSet<>(0);
 }
