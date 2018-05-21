@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,6 +33,7 @@ public class Menu {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "date", unique = true, nullable = false)
+    @NotBlank
     private Date date;
 
     @OneToMany(mappedBy = "dishName", cascade = CascadeType.ALL)
