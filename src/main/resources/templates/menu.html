@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Today's Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Bootstrap. @see version in pom.xml -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="text-center">
+
+    <div id="main">
+        <h1>Today's Menu</h1>
+        <h3>Starters</h3>
+        <div th:if="${menu.starters != null}">
+            <ul class="list-group">
+                <th:block th:object="${menu}">
+                    <li class="list-group-item" th:each="starter : *{starters}" th:text="${starter.dishName}">Starter Description here</li>
+                </th:block>
+            </ul>
+        </div>
+        <div th:if="${menu.starters == null}">
+            <p><i>no starters for today</i></p>
+        </div>
+        <h3>Main Courses</h3>
+        <div th:if="${menu.mainCourses != null}">
+            <ul class="list-group">
+                <th:block th:object="${menu}">
+                    <li class="list-group-item" th:each="main_course : *{mainCourses}" th:text="${main_course.dishName}">Main Course Description here</li>
+                </th:block>
+            </ul>
+        </div>
+        <div th:if="${menu.mainCourses == null}">
+            <p><i>no mains for today</i></p>
+        </div>
+        <h3>Desserts</h3>
+        <div th:if="${menu.desserts != null}">
+            <ul class="list-group">
+                <th:block th:object="${menu}">
+                    <li class="list-group-item" th:each="dessert : *{desserts}" th:text="${dessert.dishName}">Dessert Description here</li>
+                </th:block>
+            </ul>
+        </div>
+        <div th:if="${menu.desserts == null}">
+            <p><i>no desserts for today</i></p>
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    $('document').ready(function(){
+        // to be filled in where necessary
+    });
+</script>
+
+</html>

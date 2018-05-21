@@ -38,12 +38,12 @@ public class MenuResource {
             .orElseThrow(() -> new RuntimeException("Error Finding Menu with date: " + date));
     }
 
-    @PostMapping("/menu/")
+    @PostMapping("/menu/save")
     public void newMenu(@Valid @RequestBody Menu menu) {
         menuRepository.save(menu);
     }
 
-    @PutMapping("/menu/")
+    @PutMapping("/menu/update")
     public void updateMenu(@Valid @RequestBody Menu menu) {
         Date date = menu.getDate();
 
@@ -55,7 +55,7 @@ public class MenuResource {
     }
 
     @DeleteMapping("/menu/{date}")
-    public ResponseEntity<?> deleteMenu(@PathVariable("date") Date date) {
+    public ResponseEntity deleteMenu(@PathVariable("date") Date date) {
         if (!menuRepository.findByDate(date).isPresent()) {
             throw new RuntimeException("Menu with date: " + date + " is not present to be deleted");
         }
