@@ -8,6 +8,7 @@ package com.mycompany.todaysmenu.todaysmenu.api;
 import com.mycompany.todaysmenu.todaysmenu.model.Menu;
 import com.mycompany.todaysmenu.todaysmenu.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,12 +55,14 @@ public class MenuResource {
     }
 
     @DeleteMapping("/menu/{date}")
-    public void deleteMenu(@PathVariable("date") Date date) {
+    public ResponseEntity<?> deleteMenu(@PathVariable("date") Date date) {
         if (!menuRepository.findByDate(date).isPresent()) {
             throw new RuntimeException("Menu with date: " + date + " is not present to be deleted");
         }
 
         Menu menu = menuRepository.findByDate(date).get();
         menuRepository.delete(menu);
+
+        return ResponseEntity.ok().build();
     }
 }
