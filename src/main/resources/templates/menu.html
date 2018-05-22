@@ -15,7 +15,7 @@
 
 <body class="text-center">
 
-    <div id="main">
+    <div id="main" th:if="${menu != null}">
         <h1>Today's Menu</h1>
         <h3>Starters</h3>
         <div th:if="${menu.starters != null}">
@@ -50,6 +50,9 @@
         <div th:if="${menu.desserts == null}">
             <p><i>no desserts for today</i></p>
         </div>
+    </div>
+    <div th:if="${menu == null}">
+        <h3>No Menu for Today</h3>
     </div>
 
 </body>
